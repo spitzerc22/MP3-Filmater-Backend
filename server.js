@@ -1,11 +1,18 @@
+//DEPENDENCIES
 const express = require('express')
 const app = express()
 require('dotenv').config()
+const mongoose = require('mongoose')
 
-app.use('/genres', require('./controllers/genres-controller.js'))
+//db connection
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true}, () => {console.log('Connected to DB')})
+//MIDDLEWARE
+
+//ROUTES
+app.use('/genres', require('./controllers/genres-controller'))
 
 app.get('/', (req, res) => {
-    res.send('This is filmater')
+    res.send('This is Filmater')
 })
 
 app.get('*', (req, res) => {

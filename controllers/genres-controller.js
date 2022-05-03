@@ -1,52 +1,43 @@
-const db = require('../models')
 
-class genresController {
-    
-    //CREATE - PostMovie
-    static async PostMovie(req, res) {
-        try{
+const Movie = require('../models/movies')
+const Comment = require('../models/comments')
+const genres = require('express').Router()
 
-        } catch(err) {
-            console.log(err)
-            res.status(404).send("Oops, something went wrong!")
-        }
-    }
-    //READ - GetMovies
-    static async GetMovies(req, res) {
-        try{
+//READ ALL
+genres.get('/:genre', (req, res) => {
+    //not really connected to db?
+//     Movie.find()
+//     .then(movie => {
+//         if(movie.genre === req.params.genre){
+//             console.log(movie)
+//             res.render(movie)
+//         }
+//     } 
+// )
+    res.send(`this is the ${req.params.genre} page`)
+})
 
-        } catch(err) {
-            console.log(err)
-            res.status(404).send("Oops, something went wrong!")
-        }
-    }
-    //READ - GetMovieId
-    static async GetMovieId(req, res) {
-        try{
+//READ ONE
+genres.get('/:genre/:id', (req ,res) => {
+    const genre = req.params.genre
+    const id = req.params.id
 
-        } catch(err) {
-            console.log(err)
-            res.status(404).send("Oops, something went wrong!")
-        }
-    }
-    //UPDATE - UpdateMovie
-    static async UpdateMovie(req, res) {
-        try{
+    res.send(`this is ${id} in the ${genre} genre`)
+})
 
-        } catch(err) {
-            console.log(err)
-            res.status(404).send("Oops, something went wrong!")
-        }
-    }
-    //DELETE - DeleteMovie
-    static async DeleteMovie(req, res) {
-        try{
+//CREATE
+genres.post('/:genre/new', (req, res) => {
+    res.send(`this is the new page for ${req.params.genre}`)
+})
 
-        } catch(err) {
-            console.log(err)
-            res.status(404).send("Oops, something went wrong!")
-        }
-    }
-}
+//UPDATE
+genres.put('/:genre/:id', (req, res) => {
+    res.send(`this is the update page for ${req.params.id} for ${req.params.genre}`)
+})
 
-module.exports = genresController
+//DELETE
+genres.delete('/:genre/:id', (req, res) => {
+    res.send(`you're going to delete ${req.params.id} from ${req.params.genre}`)
+})
+
+module.exports = genres
