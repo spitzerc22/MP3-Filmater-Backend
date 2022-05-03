@@ -1,0 +1,25 @@
+{
+  "name": "filmater-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spitzerc22/MP3-Filmater-Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spitzerc22/MP3-Filmater-Backend/issues"
+  },
+  "homepage": "https://github.com/spitzerc22/MP3-Filmater-Backend#readme",
+  "dependencies": {
+    "mongodb": "^4.5.0",
+    "mongoose": "^6.3.2"
+  }
+}
