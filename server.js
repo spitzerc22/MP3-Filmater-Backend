@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 require('dotenv').config()
 
+app.use('/genres', require('./controllers/genres-controller.js'))
 
 app.get('/', (req, res) => {
     res.send('This is filmater')

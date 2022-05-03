@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+require('dotenv').config()
 
 //db connection
 mongoose.connect(
@@ -8,4 +9,5 @@ mongoose.connect(
     }, () => {console.log("Connected to DB")}
 )
 
-module.exports.Moves = require('./movie.js')
+module.exports.Movie = require('./movies.js')
+module.exports.Comment = require('./comments.js')
