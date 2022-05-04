@@ -3,11 +3,11 @@ const mongoose = require('mongoose')
 const movieSchema = new mongoose.Schema({
     title:{type: String, required: true},
     genre:{type: String, required: true},
-    pic:{type: String, default: ""},
+    pic:{type: String, default: "https://placekitten.com/200/300"},
     releaseDate: Number,
     description: String,
     createdBy: {type: String, required: true},
-    hears: {type: Number, default: 0},
+    hearts: {type: Number, setValue: 0},
     // comment: [{type: mongoose.SchemaType, ref: 'Comment'}]
 })
 

@@ -1,18 +1,30 @@
 const db = require('../models/connect')
 
 const getAllMovies = (req, res) => {
-    db.Movie.find()
-    .then(movie => {
-        res.json({movie})
-    })
-    .catch(err => {
-        console.log(err)
-    })
-    res.send(`this is the ${req.params.genre} list`)
+    if(req.params.genre === 'browseAll') {
+        db.Movie.find()
+        .then(foundedMovies => {
+            res.send(foundedMovies)
+        })
+    } else if(req.params.genre){
+        db.Movie.find({genre: req.params.genre})
+        .then(foundedMovies => {
+            res.send(foundedMovies)
+        })
+        
+    } else {
+        res.status(400).send("Oops, something went wrong!")
+    }
 }
 
 const getMovie = (req, res) => {
-    res.send(`this is the ${req.params.id} movie`)
+    if(req.params.genre && req.params.id){
+        db.Movie.find({genre: req.params.genre, _id: req.params.id})
+        .then(foundedMovie => {
+            res.send(foundedMovie)
+        })
+        
+    }
 }
 
 const createMovie = (req, res) => {
