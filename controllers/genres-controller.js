@@ -28,14 +28,14 @@ const getMovie = (req, res) => {
 }
 
 const createMovie = (req, res) => {
-    if(!req.body.title || !req.body.genre) {
+    if(!req.body.title && !req.body.genre) {
         res.status(400).send('Please fill out the required fields.')
     } else {
         const movieTitle = req.body.title
-        const movieGenre = req.body.genre
+        const movieGenre = req.body.genre.toLowerCase()
         const moviePic = req.body.pic
-        const movieReleaseDate = req.body.pic
-        const movieDescription = ""
+        const movieReleaseDate = req.body.releaseDate
+        const movieDescription = req.body.description || ""
 
         db.Movie.create({
             title: movieTitle,
@@ -45,6 +45,7 @@ const createMovie = (req, res) => {
             description: movieDescription,
             // createdBy: " "
         })
+        
         .then(() => {
             res.send("Success!")
         })
@@ -56,7 +57,28 @@ const createMovie = (req, res) => {
 }
 
 const updateMovie = (req, res) => {
-    res.send(`this is the update page for ${req.params.id} for ${req.params.genre}`)
+        const movieTitle = req.body.title
+        const movieGenre = req.body.genre.toLowerCase()
+        const moviePic = req.body.pic
+        const movieReleaseDate = req.body.releaseDate
+        const movieDescription = req.body.description || ""
+
+        db.Movie.findByIdAndUpdate(req.params.id, {
+            title: movieTitle,
+            genre: movieGenre,
+            pic: moviePic,
+            releaseDate: movieReleaseDate,
+            description: movieDescription
+        })
+
+        .then(() => {
+            res.send("Success!")
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(404).send("Oops, something went wrong!")
+        })
+        
 }
 
 const deleteMovie = (req, res) => {
