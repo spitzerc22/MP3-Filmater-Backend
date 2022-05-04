@@ -82,7 +82,14 @@ const updateMovie = (req, res) => {
 }
 
 const deleteMovie = (req, res) => {
-    res.send(`you're going to delete ${req.params.id} from ${req.params.genre}`)
+    db.Movie.findByIdAndDelete(req.params.id)
+    .then(() => {
+        res.send("Success!")
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(404).send("Oops, something went wrong!")
+    })
 }
 module.exports = {
     getAllMovies,
