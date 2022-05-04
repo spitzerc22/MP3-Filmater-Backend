@@ -13,3 +13,4 @@ mongoose.connect(
 
 module.exports.Movie = require('./movies')
 module.exports.Comment = require('./comments')
+module.exports.User = require('./users')
