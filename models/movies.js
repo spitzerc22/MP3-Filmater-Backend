@@ -7,7 +7,7 @@ const movieSchema = new mongoose.Schema({
     releaseDate: Number,
     description: String,
     createdBy: {type: String, required: true},
-    hearts: {type: Number, setValue: 0},
+    // hearts: {type: Number, setValue: 0},
     // comment: [{type: mongoose.SchemaType, ref: 'Comment'}]
 })
 

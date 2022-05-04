@@ -28,10 +28,30 @@ const getMovie = (req, res) => {
 }
 
 const createMovie = (req, res) => {
-    if(!req.body.title) {
-        res.status(400).send('Oops someting went wrong.')
+    if(!req.body.title || !req.body.genre) {
+        res.status(400).send('Please fill out the required fields.')
     } else {
-    res.send(`this is the new page for ${req.params.genre}`)
+        const movieTitle = req.body.title
+        const movieGenre = req.body.genre
+        const moviePic = req.body.pic
+        const movieReleaseDate = req.body.pic
+        const movieDescription = ""
+
+        db.Movie.create({
+            title: movieTitle,
+            genre: movieGenre,
+            pic: moviePic,
+            releaseDate: movieReleaseDate,
+            description: movieDescription,
+            // createdBy: " "
+        })
+        .then(() => {
+            res.send("Success!")
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(404).send("Oops, something went wrong!")
+        })
     }
 }
 
