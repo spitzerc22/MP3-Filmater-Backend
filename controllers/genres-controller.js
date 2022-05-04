@@ -6,14 +6,17 @@ const genres = require('express').Router()
 //READ ALL
 genres.get('/:genre', (req, res) => {
     //not really connected to db?
-//     Movie.find()
-//     .then(movie => {
-//         if(movie.genre === req.params.genre){
-//             console.log(movie)
-//             res.render(movie)
-//         }
-//     } 
-// )
+    Movie.find()
+    .then(movie => {
+        if(movie.genre === req.params.genre){
+            console.log(movie)
+            res.render(movie)
+        } 
+    })
+    .catch(err => {
+        console.log(err)
+    })
+    
     res.send(`this is the ${req.params.genre} page`)
 })
 
@@ -21,8 +24,11 @@ genres.get('/:genre', (req, res) => {
 genres.get('/:genre/:id', (req ,res) => {
     const genre = req.params.genre
     const id = req.params.id
-
-    res.send(`this is ${id} in the ${genre} genre`)
+    // Movie.findById(id)
+    //  .then(foundMovie => {
+    //      res.send(foundMovie.title)
+    //  })
+    res.send(`this is ${id} in ${genre}`)
 })
 
 //CREATE
