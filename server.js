@@ -4,9 +4,10 @@ const app = express()
 require('dotenv').config()
 const mongoose = require('mongoose')
 
-//db connection
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true}, () => {console.log('Connected to DB')})
+
 //MIDDLEWARE
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
 
 //ROUTES
 app.use('/genres', require('./routes/genresRoutes'))
