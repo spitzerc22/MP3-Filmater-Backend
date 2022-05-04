@@ -9,8 +9,8 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
 //MIDDLEWARE
 
 //ROUTES
-app.use('/genres', require('./controllers/genres-controller'))
-app.use('/login', require('./controllers/auth-controller'))
+app.use('/genres', require('./routes/genresRoutes'))
+app.use('/login', require('./routes/authRoutes'))
 
 app.get('/', (req, res) => {
     res.send('This is Filmater')
