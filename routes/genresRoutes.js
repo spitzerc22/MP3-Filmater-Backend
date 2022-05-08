@@ -6,7 +6,7 @@ const {getAllMovies, getMovie, createMovie, updateMovie, deleteMovie} = require(
 genres.get('/:genre', getAllMovies)
 
 //CREATE
-genres.post('/:genre/new', createMovie)
+genres.post('/submit', createMovie)
 
 //READ ONE, UPDATE AND DELETE
 genres.route('/:genre/:id').get(getMovie).put(updateMovie).delete(deleteMovie)

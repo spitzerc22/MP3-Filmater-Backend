@@ -31,18 +31,18 @@ const createMovie = (req, res) => {
     if(!req.body.title && !req.body.genre) {
         res.status(400).send('Please fill out the required fields.')
     } else {
-        const movieTitle = req.body.title
-        const movieGenre = req.body.genre.toLowerCase()
-        const moviePic = req.body.pic
-        const movieReleaseDate = req.body.releaseDate
-        const movieDescription = req.body.description || ""
+        const title = req.body.title
+        const genre = req.body.genre.toLowerCase()
+        const pic = req.body.pic
+        const releaseDate = req.body.releaseDate
+        const description = req.body.description || ""
 
         db.Movie.create({
-            title: movieTitle,
-            genre: movieGenre,
-            pic: moviePic,
-            releaseDate: movieReleaseDate,
-            description: movieDescription,
+            title: title,
+            genre: genre,
+            pic: pic,
+            releaseDate: releaseDate,
+            description: description,
             // createdBy: " "
         })
         
@@ -57,18 +57,18 @@ const createMovie = (req, res) => {
 }
 
 const updateMovie = (req, res) => {
-        const movieTitle = req.body.title
-        const movieGenre = req.body.genre.toLowerCase()
-        const moviePic = req.body.pic
-        const movieReleaseDate = req.body.releaseDate
-        const movieDescription = req.body.description || ""
+        const title = req.body.title
+        const genre = req.body.genre.toLowerCase()
+        const pic = req.body.pic
+        const releaseDate = req.body.releaseDate
+        const description = req.body.description || ""
 
         db.Movie.findByIdAndUpdate(req.params.id, {
-            title: movieTitle,
-            genre: movieGenre,
-            pic: moviePic,
-            releaseDate: movieReleaseDate,
-            description: movieDescription
+            title: title,
+            genre: genre,
+            pic: pic,
+            releaseDate: releaseDate,
+            description: description
         })
 
         .then(() => {

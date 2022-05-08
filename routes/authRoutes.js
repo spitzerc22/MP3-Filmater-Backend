@@ -1,22 +1,19 @@
 const auth = require('express').Router()
+const {submitLogin, submitRegister} = require('../controllers/auth-controller')
 
 //INDEX/READ
 auth.get('/', (req, res) => {
     res.send('this is retrieving login page')
 })
 
-
 //POST
-auth.post('/', (req, res) => {
-    res.send('this is submitting login page')
-})
+auth.post('/', submitLogin)
 
 //CREATE    
-auth.get('/register', (req, res) => {
+auth.get('/new', (req, res) => {
     res.send('this is retrieving signup page')
 })
 
-auth.post('/register', (req, res) => {
-    res.send('this is submitting the register form')
-})
+auth.post('/new', submitRegister)
+
 module.exports = auth

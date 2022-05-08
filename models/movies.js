@@ -6,7 +6,7 @@ const movieSchema = new mongoose.Schema({
     pic:{type: String, default: "https://placekitten.com/200/300"},
     releaseDate: Number,
     description: String,
-    // createdBy: {type: String, required: true},
+    //createdBy:
     // hearts: {type: Number, setValue: 0},
     // comment: [{type: mongoose.SchemaType, ref: 'Comment'}]
 })

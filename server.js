@@ -2,12 +2,13 @@
 const express = require('express')
 const app = express()
 require('dotenv').config()
-const mongoose = require('mongoose')
+const cors = require('cors')
 
 
 //MIDDLEWARE
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
+app.use(cors())
 
 //ROUTES
 app.use('/genres', require('./routes/genresRoutes'))
